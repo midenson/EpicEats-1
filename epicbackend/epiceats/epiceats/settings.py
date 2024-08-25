@@ -56,6 +56,12 @@ MIDDLEWARE = [
 ]
 
 
+CORS_ORIGIN_WHITELIST = [
+    'https://3000-ayonaim-epiceats-9xu2quy3ks2.ws-eu115.gitpod.io'
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
 ROOT_URLCONF = 'epiceats.urls'
 
 TEMPLATES = [
