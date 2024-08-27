@@ -4,39 +4,45 @@ import React, { useEffect, useState } from 'react'
 
 
 const Apicall = () => {
-    const [data, setdata] = useState('');
+    const [data, setdata] = useState([]);
     const [error, seterror] = useState('');
     useEffect(() => {
-        axios.get('https://8000-ayonaim-epiceats-9xu2quy3ks2.ws-eu115.gitpod.io/user')
-        .then(res => {
-            const data = res.data
-            setdata(data.json)
-            console.log(data)
+        // fetch('https://8000-midenson-epiceats-5e1zywn1xjr.ws-eu115.gitpod.io/user/', {
+        //     credentials: 'include', // or 'same-origin'
+        //     headers: {
+        //       'Accept': 'application/json', 
+        //     }
+        //   })
+        //   .then(res => console.log(res))
+        //   .then(res => setdata([res]))
+        //   .catch(error => {
+        //     console.log(error.message)
+        //   })
+      fetch('https://8000-midenson-epiceats-5e1zywn1xjr.ws-eu115.gitpod.io/user', {
+        credentials: 'include', // or 'same-origin'
+        headers: {
+          'Accept': 'application/json', 
+        }
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json(); // Parse the JSON data from the response
+        })
+        .then(data => {
+          console.log(data); // Handle the data here
+          setdata(data)
         })
         .catch(error => {
-            seterror(error.json)
-            console.log(error)
-        })
-    }, [])
+          console.error('There has been a problem with your fetch operation:', error);
+        });
 
-  return (
-    <div>
-        <div>
-        {
-            data && <div>
-                {
-                    data
-                }
-            </div>
-        }
-        </div>
-        <div>
-        {
-            error && <div>{error}</div>
-        }
-        </div>
-    </div>
-  )
+    }, [])
+    return (
+      <div>
+      </div>
+    )
 }
 
 export default Apicall

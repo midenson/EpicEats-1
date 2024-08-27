@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-oh2dfyx_+u$+mi6ep==(5w+jht5+zaq*z0i9hiuy(&6)ncidt7
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-ayonaim-epiceats-9xu2quy3ks2.ws-eu115.gitpod.io'
+    '8000-midenson-epiceats-5e1zywn1xjr.ws-eu115.gitpod.io'
 ]
 
 
@@ -39,31 +39,33 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'ayoepic',
     'rest_framework',
-    'corsheaders'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware'
 ]
 
 
-CORS_ORIGIN_WHITELIST = [
-    'https://3000-ayonaim-epiceats-9xu2quy3ks2.ws-eu115.gitpod.io'
-]
-
-CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'epiceats.urls'
 
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "https://3000-midenson-epiceats-5e1zywn1xjr.ws-eu115.gitpod.io",
+# ]
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
